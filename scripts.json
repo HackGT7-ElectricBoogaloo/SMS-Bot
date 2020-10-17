@@ -4,12 +4,13 @@
         "What?",
         "Pardon?"
     ],
+    "init": "hello",
     "hello": {
         "message": "Hello?",
         "responses": {
-            "Hi": "Whatsup",
-            "Hello": "Whatsup",
-            "Bye": "Goodbye"
+            "Hi": "whatsup",
+            "Hello": "whatsup",
+            "Bye": "goodbye"
         }
     },
     "whatsup": {
@@ -17,5 +18,11 @@
         "responses": {
             "Not Much": "nextState"
         }
+    },
+    "name question": {
+        "message": "What's your name?"
+    },
+    "goodbye": {
+        "message": "Goodbye!!!"
     }
 }
