@@ -5,6 +5,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 import json
 import random
 import time
+import hashlib
 
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
@@ -42,6 +43,7 @@ def incoming_sms():
 
     # Set the phone number
     phone_number = request.values.get('From')
+    phone_number = hashlib.md5(phone_number.encode('utf-8')).hexdigest()
 
     # Find the current state of the user
     if phone_number not in states or body == "RESTART":
