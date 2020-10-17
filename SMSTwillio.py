@@ -7,7 +7,7 @@ import json
 
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
-# account = json.load(open('account.json', encoding="utf8"))
+account = json.load(open('account.json', encoding="utf8"))
 
 # client = Client(account["account_sid"], account["auth_token"])
 
@@ -45,4 +45,4 @@ def incoming_sms():
     return str(resp)
 
 if __name__ == "__main__":
-    app.run(host='128.61.105.40', debug=True)
+    app.run(host=account["server-ip"], debug=True)
