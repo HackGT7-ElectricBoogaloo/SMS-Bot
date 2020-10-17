@@ -2,27 +2,63 @@
     "invalids": [
         "I don't understand",
         "What?",
-        "Pardon?"
+        "I don't understand that internet slang you're using"
     ],
-    "init": "hello",
-    "hello": {
-        "message": "Hello?",
+    "init": "name",
+    "name": {
+        "message": "This is Detective Burdell with GTPD. Welcome to the team, rook. You're going to be running tactical on this investigation. You got a preferred name, kid?",
+        "nextState": "greetings"
+    },
+    "greetings": {
+        "message": "Alright, %NAME, I can't say too much on an unsecure line, but I assume you've been briefed. So whaddya think: COFFEE or TEA?",
         "responses": {
-            "Hi": "whatsup",
-            "Hello": "whatsup",
-            "Bye": "goodbye"
+            "coffee": "starbucks",
+            "tea": "fratHouse"
         }
     },
-    "whatsup": {
-        "message": "Whats up?",
+    "starbucks": {
+        "message": "I'm at Starbucks. What should I get to blend in?",
         "responses": {
-            "Not Much": "nextState"
+            "espresso": "delicious",
+            "nothing": "calm",
+            "coffee": "calm",
+            "plain": "calm",
+            "black": "calm",
+            "": "outrage"
         }
     },
-    "name question": {
-        "message": "What's your name?"
+    "outrage": {
+        "message": "Young people these days! I can't believe it. Good coffee is black coffee. Saw the perp leave after my outrage. Should I follow?",
+        "responses": {
+            "yes": "frathouse",
+            "no": "gameOver"
+        }
     },
-    "goodbye": {
-        "message": "Goodbye!!!"
+    "calm": {
+        "message": "Just how I like it! Just saw a man fitting our perp's description head out. Should I follow him? Could be a decoy",
+        "responses": {
+            "yes": "frathouse",
+            "no": "gameOver"
+        }
+    },
+    "delicious": {
+        "message": "You sure know how to pick 'em %NAME! I just saw a man fitting our perp's description head out. Should I follow him? Could be a decoy",
+        "responses": {
+            "yes": "frathouse",
+            "no": "gameOver"
+        }
+    },
+    "frathouse": {
+        "message": "He went inside a frathouse, and I don't think they've seen me. You thinking INFILTRATION or OBSERVATION? Cause I know my preference",
+        "responses": {
+            "infil": "inside",
+            "observ": "outside"
+        }
+    },
+    "inside": {
+        "message": "Never took you for a risk taker. I'll try to stick to the sidelines, but if you'd rather, I'll try to blend in",
+        "responses": {
+            "blend": "gameOver"
+        }
     }
 }
