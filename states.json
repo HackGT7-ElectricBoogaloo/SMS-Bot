@@ -1,0 +1,12 @@
+{
+    "numberhere": {
+        "currentstate": "hello",
+        "name": "namehere",
+        "color": "Blue"
+    },
+    "number2here": {
+        "currentstate": "hello",
+        "name": "name2here",
+        "color": "Yellow"
+    }
+}

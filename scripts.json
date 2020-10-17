@@ -1,0 +1,21 @@
+{
+    "invalids": [
+        "I don't understand",
+        "What?",
+        "Pardon?"
+    ],
+    "hello": {
+        "message": "Hello?",
+        "responses": {
+            "Hi": "Whatsup",
+            "Hello": "Whatsup",
+            "Bye": "Goodbye"
+        }
+    },
+    "whatsup": {
+        "message": "Whats up?",
+        "responses": {
+            "Not Much": "nextState"
+        }
+    }
+}
