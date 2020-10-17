@@ -41,27 +41,35 @@ def incoming_sms():
     resp = MessagingResponse()
 
     # Set the phone number
-    phone_number = request.values.get('Number', None)
+    phone_number = request.values.get('From')
 
     # Find the current state of the user
-    if phone_number not in states:
-        states[phone_number] = {"currentstate": start_state}
+    if phone_number not in states or body == "RESTART":
+        states[phone_number] = {"currentstate": start_state, "name": "NO_NAME"}
+        json.dump(states, open('states.json', mode ="w"))
+        resp.message(scripts[start_state]["message"])
+        return str(resp)
+    
     current_state = states[phone_number]["currentstate"]
 
     # Store name exception. Follow the same format to store any 
     # values that need to be recorded
-    if current_state == "name question":
+    if current_state == "name":
         states[phone_number]["name"] = body
-        name_found = TRUE
+        json.dump(states, open('states.json', mode ="w"))
+        return str(resp)
 
     # Determine the right reply for this message
-    if body in scripts[current_state]["responses"] or name_found:
+    elif body in scripts[current_state]["responses"]:
         next_state = scripts[current_state]["responses"][body]
         states[phone_number] = {"currentstate": next_state}
+        json.dump(states, open('states.json', mode ="w"))
+        reply  = scripts[next_state]["message"]
+
         resp.message(scripts[next_state]["message"])
     # If the response is invalid
     else:
-        random_invalid = possible_invalids[random.choice(scripts["invalids"])]
+        random_invalid = random.choice(scripts["invalids"])
         resp.message(random_invalid)
 
     return str(resp)
